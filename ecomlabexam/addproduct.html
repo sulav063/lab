@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Products</title>
+<style>
+    body { font-family: Arial; padding: 20px; }
+    .box { background:#f7f7f7; padding:15px; width:300px; border-radius:8px; border:1px solid #ddd; }
+    input, button { padding:6px; margin:5px 0; width:95%; }
+    button { background:black; color:white; border:none; border-radius:4px; }
+    .item { background:white; padding:6px; margin:5px 0; border:1px solid #ccc; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h3>Add Product</h3>
+    <input id="pname" placeholder="Product Name">
+    <input id="price" placeholder="Price" type="number">
+    <button onclick="addProduct()">Add</button>
+
+    <h3>Product List</h3>
+    <div id="list"></div>
+</div>
+
+<script>
+var products = [];
+
+function addProduct() {
+    var name = document.getElementById("pname").value;
+    var price = parseFloat(document.getElementById("price").value);
+
+    var product = { name: name, price: price };
+    products.push(product);
+    display();
+}
+
+function display() {
+    var html = "";
+    for (var i = 0; i < products.length; i++) {
+        html += "<div class='item'>" + products[i].name + " - Rs." + products[i].price + "</div>";
+    }
+    document.getElementById("list").innerHTML = html;
+}
+</script>
+</body>
+</html>
